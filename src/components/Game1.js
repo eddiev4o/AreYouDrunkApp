@@ -26,29 +26,31 @@ updateHandler = ({ touches, screen, time }) => {
     });
   }
 };
-//onButtonPress() {
-//  Actions.game2();
-//}
-setTimePassed() {
-  this.setState({timePassed: true});
-  Actions.game2();
+onButtonPress() {
+ Actions.game2();
 }
-
-
-
-  render() {
-    if (!this.state.timePassed) {
-    setTimeout(() => {
-      this.setTimePassed();
-    }, 5000);
-  }
+// setTimePassed() {
+//   this.setState({timePassed: true});
+//   Actions.game2();
+// }
+//
+//
+//
+   render() {
+//     if (!this.state.timePassed) {
+//     setTimeout(() => {
+//       this.setTimePassed();
+//     }, 5000);
+//   }
 
       return (
             <GameLoop style={styles.container} onUpdate={this.updateHandler}>
               <View style={[styles.player, { left: this.state.x, top: this.state.y }]} />
               <View style={{ backgroundColor: '#23272A' }} >
               <CardSection>
-
+              <Button onPress={this.onButtonPress.bind(this)}>
+                Game 2
+              </Button>
               </CardSection>
               </View>
 
