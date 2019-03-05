@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react';
-import { View, Text, AppRegistry, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TextInput, AppRegistry, StyleSheet, Dimensions } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
 import {Actions} from 'react-native-router-flux';
 import {CardSection, Button} from './common';
 import { GameLoop } from "react-native-game-engine";
@@ -7,69 +8,65 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const RADIUS = 25;
 
 class Game2 extends PureComponent {
-constructor () {
-  super();
+constructor (props) {
+  super(props);
   this.state = {
-    x: WIDTH / 2 - RADIUS,
-    y: HEIGHT / 2 - RADIUS,
-    timePassed2: false
-  };
+    word: '',
+    count: 0,
+
+    var: bankOne = {
+      id: 1,
+      words: ['thirsty','merge','shoe','color','spot','temporary','think', 'capable', 'neat', 'leather']
+     },
+     var: bankTwo = {
+      id: 2,
+      words: ['knife','heavy','daughter','lively','damage','organize','plan', 'wake', 'lip', 'soap']
+     }
+     
+  }
 }
 
-
-updateHandler = ({ touches, screen, time }) => {
-  let move = touches.find(x => x.type === "move");
-  if (move) {
-    this.setState({
-      x: this.state.x + move.delta.pageX,
-      y: this.state.y + move.delta.pageY
-    });
-  }
-};
 onButtonPress() {
  Actions.game3();
 }
-// setTimePassed() {
-//   this.setState({timePassed2: true});
-//   Actions.game3();
-// }
-
-
-
   render() {
-  //   if (!this.state.timePassed2) {
-  //   setTimeout(() => {
-  //     this.setTimePassed();
-  //   }, 5000);
-  // }
 
+      const {count} = this.state
       return (
-            <GameLoop style={styles.container} onUpdate={this.updateHandler}>
-              <View style={[styles.player, { left: this.state.x, top: this.state.y }]} />
-              <View style={{ backgroundColor: '#23272A' }} >
-              <CardSection>
-              <Button onPress={this.onButtonPress.bind(this)}>
-                Game 3
-              </Button>
-              </CardSection>
-              </View>
+              <View style={styles.container} >
+                <CardSection>
+                <Button onPress={this.onButtonPress.bind(this)}>
+                  Game 3
+                </Button>
+                </CardSection>
+                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
 
-            </GameLoop>
+              </View>
     );
   }
+
+  componentDidMount () {
+    this.myInterval = setInterval(() => {
+      this.setState(prevState => ({
+        count : prevState.count + 1
+      }))
+    }, 3000)
+  }
+  componentWillUnmount() {
+    clearInterval(this.myInterval)
+  }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF"
+    backgroundColor: "#FFF",  
+    //justifyContent: 'center',
+    alignItems: 'center'
   },
-  player: {
-    position: "absolute",
-    backgroundColor: "blue",
-    width: RADIUS * 2,
-    height: RADIUS * 2,
-    borderRadius: RADIUS * 2
+  textStyle : {
+    fontSize: 36,
   }
 });
 
