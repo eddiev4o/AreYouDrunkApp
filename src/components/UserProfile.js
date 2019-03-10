@@ -32,7 +32,7 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: '#23272A'}}>
+      <View style={{ backgroundColor: '#164170'}}>
 
         <CardSection style={{flexDirection: 'column'}}>
         <Text style={styles.pickerTextStyle}>Sex</Text>

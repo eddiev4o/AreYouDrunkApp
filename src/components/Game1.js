@@ -14,7 +14,7 @@ onButtonPress() {
 
   render() {
       return (
-              <View style= {{flex: 1, backgroundColor: 'blue'}}>
+              <View style= {{backgroundColor: '#164170'}}>
                   <View style = {{flex: 2, backgroundColor:'#164170'}}>
                   <Image source={require('../../img/RedRed.png')} style={{width: 128, height: 64}} />
                   </View>
@@ -31,7 +31,7 @@ onButtonPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF"
+    backgroundColor: "#164170"
   },
   player: {
     position: "absolute",
