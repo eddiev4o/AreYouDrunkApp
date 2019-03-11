@@ -1,28 +1,59 @@
 import React, {Component, PureComponent} from 'react';
 import { View, Text, AppRegistry, StyleSheet, Dimensions, Image } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
 import {Actions} from 'react-native-router-flux';
-import {CardSection, Button} from './common';
+import {CardSectionBlue, Button} from './common';
 import { GameLoop } from "react-native-game-engine";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const RADIUS = 25;
 
 class Game1 extends Component {
+//   state = {
+//     timer: null,
+//     counter: 0
+//   };
+//   mixins: [TimerMixin]
+//
+//   componentDidMount () {
+//     this.myInterval = setInterval(() => {
+//       countUp();
+//     }, 3000)
+//   }
+//
+//   componentWillUnmount() {
+//     clearInterval(this.myInterval)
+//   }
+//
+// countUp() {
+//   this.setState({
+//     counter: this.state.counter + 1
+//   });
+// }
 
 onButtonPress() {
  Actions.game2();
 }
 
   render() {
+      const pic = '../../img/BlueBlue.png';
+      const pic2 = '../../img/BlueGreen.png';
+      const pic3 = '../../img/BlueRed.png';
+      const pic4 = '../../img/RedBlue.png';
+      const pic5 = '../../img/RedGreen.png';
+      const pic6 = '../../img/RedRed.png';
+      const pic7 = '../../img/GreenBlue.png';
+      const pic8 = '../../img/GreenGreen.png';
+      const pic9 = '../../img/GreenRed.png';
       return (
-              <View style= {{backgroundColor: '#164170'}}>
-                  <View style = {{flex: 2, backgroundColor:'#164170'}}>
-                  <Image source={require('../../img/RedRed.png')} style={{width: 128, height: 64}} />
+              <View style={{flex: 1, backgroundColor: '#164170' }}>
+                  <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#164170' }}>
+                  <Image source={require(''+pic+'')} style={{ width: 128, height: 64 }} />
                   </View>
-                  <CardSection>
+                  <CardSectionBlue>
                     <Button onPress={this.onButtonPress.bind(this)}>
                       Game 2
                     </Button>
-                  </CardSection>
+                  </CardSectionBlue>
               </View>
     );
   }

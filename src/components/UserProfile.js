@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, ImageBackground, Alert } from 'react-native';
+import { SafeAreaView, Text, Picker, ImageBackground, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { CardSection, Input, Button, Spinner } from './common';
+import { Card, CardSection, CardSectionBlue, Input, Button, Spinner } from './common';
 import { connect } from 'react-redux';
 import { profileUpdate } from '../actions';
 
@@ -32,7 +32,8 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: '#164170'}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#164170'}}>
+      <Card style={{ backgroundColor: '#164170'}}>
 
         <CardSection style={{flexDirection: 'column'}}>
         <Text style={styles.pickerTextStyle}>Sex</Text>
@@ -82,17 +83,18 @@ class UserProfile extends Component {
           onChangeText={text => this.props.profileUpdate({ prop: 'reaction', value: text })}
           />
         </CardSection>
-        <CardSection>
+        <CardSectionBlue>
           <Button onPress={this.onButtonPress.bind(this)}>
             BEGIN
           </Button>
-        </CardSection>
-        <CardSection>
+        </CardSectionBlue>
+        <CardSectionBlue>
           <Button onPress={this.onPOSTPress.bind(this)}>
             POST REQUEST
           </Button>
-        </CardSection>
-      </View>
+        </CardSectionBlue>
+      </Card>
+      </SafeAreaView>
     );
   }
 }

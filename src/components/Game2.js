@@ -1,8 +1,8 @@
 import React, {Component, PureComponent} from 'react';
-import { View, Text, TextInput, AppRegistry, StyleSheet, Dimensions } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, AppRegistry, StyleSheet, Dimensions } from 'react-native';
 import TimerMixin from 'react-timer-mixin';
 import {Actions} from 'react-native-router-flux';
-import {CardSection, Button} from './common';
+import {CardSectionBlue, Button} from './common';
 import { GameLoop } from "react-native-game-engine";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const RADIUS = 25;
@@ -22,7 +22,7 @@ constructor (props) {
       id: 2,
       words: ['knife','heavy','daughter','lively','damage','organize','plan', 'wake', 'lip', 'soap']
      }
-     
+
   }
 }
 
@@ -34,12 +34,13 @@ onButtonPress() {
       const {count} = this.state
       return (
               <View style={styles.container} >
-                <CardSection>
+                <Text style={styles.textStyle2}>Memorize each word in the sequence</Text>
+                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
+                <CardSectionBlue>
                 <Button onPress={this.onButtonPress.bind(this)}>
                   Game 3
                 </Button>
-                </CardSection>
-                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
+                </CardSectionBlue>
 
               </View>
     );
@@ -61,12 +62,23 @@ onButtonPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",  
+    backgroundColor: "#164170",
     //justifyContent: 'center',
     alignItems: 'center'
   },
   textStyle : {
     fontSize: 36,
+    height: 50,
+    alignSelf: 'stretch',
+    textAlign: 'center',
+    backgroundColor: 'white',
+    borderRadius: 5
+  },
+  textStyle2 : {
+    fontSize: 40,
+    color: '#E8971C',
+    textAlign: 'center'
+
   }
 });
 
