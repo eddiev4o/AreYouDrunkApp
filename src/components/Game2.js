@@ -72,7 +72,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     textAlign: 'center',
     backgroundColor: 'white',
-    borderRadius: 5
+    borderRadius: 5,
+    marginTop: 50,
+    marginLeft: 25,
+    marginRight: 25,
+    marginBottom: 100
   },
   textStyle2 : {
     fontSize: 40,

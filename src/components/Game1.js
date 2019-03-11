@@ -46,7 +46,7 @@ onButtonPress() {
       const pic9 = '../../img/GreenRed.png';
       return (
               <View style={{flex: 1, backgroundColor: '#164170' }}>
-                  <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: '#164170' }}>
+                  <View style={styles.gameContainer}>
                   <Image source={require(''+pic+'')} style={{ width: 128, height: 64 }} />
                   </View>
                   <CardSectionBlue>
@@ -64,12 +64,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#164170"
   },
-  player: {
-    position: "absolute",
-    backgroundColor: "darkblue",
-    width: RADIUS * 2,
-    height: RADIUS * 2,
-    borderRadius: RADIUS * 2
+  gameContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginTop: 100,
+    marginBottom: 100,
+    marginRight: 25,
+    marginLeft: 25
   }
 });
 
