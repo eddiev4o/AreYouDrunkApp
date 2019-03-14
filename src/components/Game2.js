@@ -16,7 +16,7 @@ constructor (props) {
 
     var: bankOne = {
       id: 1,
-      words: ['thirsty','merge','shoe','color','spot','temporary','think', 'capable', 'neat', 'leather']
+      words: ['shoe','merge','thirsty','color','spot','temporary','think', 'capable', 'neat', 'leather']
      },
      var: bankTwo = {
       id: 2,
@@ -34,7 +34,7 @@ onButtonPress() {
       const {count} = this.state
       return (
               <View style={styles.container} >
-                <Text style={styles.textStyle2}>Memorize each word in the sequence</Text>
+                <Text style={styles.textStyle2}>Try to recall each word in this sequence</Text>
                 <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
                 <CardSectionBlue>
                 <Button onPress={this.onButtonPress.bind(this)}>
