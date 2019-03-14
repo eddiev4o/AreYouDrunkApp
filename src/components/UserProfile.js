@@ -10,6 +10,9 @@ class UserProfile extends Component {
   onButtonPress() {
     Actions.game1();
   }
+  onLoginPress() {
+    Actions.auth();
+  }
 
   onPOSTPress() {
     const { sex, weight, drinks, reaction } = this.props;
@@ -91,6 +94,11 @@ class UserProfile extends Component {
         <CardSectionBlue>
           <Button onPress={this.onPOSTPress.bind(this)}>
             POST REQUEST
+          </Button>
+        </CardSectionBlue>
+        <CardSectionBlue>
+          <Button onPress={this.onLoginPress.bind(this)}>
+            LOG IN
           </Button>
         </CardSectionBlue>
       </Card>
