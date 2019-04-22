@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, Picker, ImageBackground, Alert } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, Picker, ImageBackground, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, CardSectionBlue, Input, Button, Spinner } from './common';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { profileUpdate } from '../actions';
 class UserProfile extends Component {
 
   onButtonPress() {
-    Actions.game1();
+    Actions.game1intro();
   }
   onLoginPress() {
     Actions.auth();

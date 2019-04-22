@@ -31,7 +31,6 @@ const ButtonMain = ({onPress, children}) => {
             borderColor: '#fff',
             marginLeft: 30,
             marginRight: 30,
-            marginTop: 650,
             padding: 10
         }
     };

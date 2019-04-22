@@ -43,7 +43,7 @@ const loginUserSuccess = (dispatch, user) => {
         type: LOGIN_USER_SUCCESS,
         payload: user
     });
-    Actions.game1();
+    Actions.game1intro();
 };
 
 const loginUserFail = (dispatch) => {
