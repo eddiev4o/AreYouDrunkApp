@@ -14,6 +14,10 @@ class Results extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    clearInterval(this.myInterval);
+  }
+
   onButtonPress() {
     Actions.start();
   }
@@ -32,21 +36,21 @@ class Results extends PureComponent {
           reaction: this.props.reaction,
         }),
     })
-      .then((response)=> response.json())
+      .then((response) => response.json())
       .then((responseData) => {
         this.setState(previousState => (
-          { dataResp: responseData.BAC}
+          { dataResp: responseData.BAC }
         ));
       console.log(responseData);
-      console.log("dataResp", this.state.dataResp)
-    })
-
+      console.log('dataResp', this.state.dataResp);
+    });
+    const disResp = this.state.dataResp.toFixed(2);
     return (
       <ImageBackground source={require('../../img/results.gif')}
       style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={{flex: 1, flexDirection: 'column', marginBottom: 25}}>
           <View style={styles.gameContainer}>
-            <Text style={styles.textStyle2}> BAC: {this.state.dataResp}</Text>
+            <Text style={styles.textStyle2}> BAC: {disResp}%</Text>
           </View>
           <ButtonMain onPress={this.onButtonPress.bind(this)} style={{flex: 2, justifyContent: 'flex-end', marginBottom: 25}}>
             Try Again

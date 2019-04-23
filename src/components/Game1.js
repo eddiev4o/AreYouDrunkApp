@@ -20,40 +20,99 @@ class Game1 extends PureComponent {
       answered: false,
       average: 0,
       total: 0,
+    };
+  }
+  componentDidMount () {
+    this.myInterval = setInterval(() => {
+      if (this.state.answered == false & this.state.turns > 0) {
+        this.state.results[this.state.turns - 1] = 5000;
+      }
+      if (this.state.turns > 0) {
+      this.setState(prevState => ({
+          count: Math.floor((Math.random() * 8) + 1),
+          seconds : 0,
+          milliseconds : 0,
+          turns : this.state.turns - 1,
+          answered : false
+      }))
     }
+    if (this.state.turns === 0) {
+      this.stopTimer();
+      for (var i = 0; i < 10; i++) {
+        this.state.total += this.state.results[i];
+      }
+      this.state.average = this.state.total / 10;
+      console.log(this.state.results);
+      console.log(this.state.average);
+      this.props.profileUpdate({ prop: 'reaction', value: this.state.average });
+      Actions.game2();
+      this.setState(prevState => ({
+          count: Math.floor((Math.random() * 8) + 1),
+          seconds : 0,
+          milliseconds : 0,
+          turns : this.state.turns - 1,
+          answered : false,
+      }))
+    }
+  }, 4000);
+
+    this.myInterval2 = setInterval(() => {
+      this.setState(prevState => ({
+        milliseconds : prevState.milliseconds + 1
+      }))
+    }, 100);
+
   }
 
+  componentWillUnmount() {
+    console.log('componentWillUnmount called in Game1');
+    clearInterval(this.myInterval);
+    clearInterval(this.myInterval2);
+  }
 
 onButtonPress() {
+  clearInterval(this.myInterval);
+  clearInterval(this.myInterval);
+  console.log('cleared intervals in Game1');
  Actions.game2();
 }
 
+stopTimer() {
+  console.log('stopTimer called in Game1')
+  clearInterval(this.myInterval);
+  clearInterval(this.myInterval2);
+}
+
 onTruePress() {
-  console.log("true");
-  this.state.answered = true;
-  var img = this.state.count;
-  var turn = this.state.turns;
-  console.log(img)
-  if ( img === 0 || img === 5  || img === 7) {
-    this.state.results[turn - 1] = this.state.milliseconds * 100;
-    console.log(this.state.results[turn-1]);
-  } else {
-    this.state.results[turn-1] = 6000;
-    console.log(this.state.results[turn-1]);
+  console.log(this.state.answered);
+  if(this.state.answered == false && this.state.turns > 0) {
+    this.state.answered = true;
+    var img = this.state.count;
+    var turn = this.state.turns;
+    console.log(img)
+    if ( img === 0 || img === 5  || img === 7) {
+      this.state.results[turn - 1] = this.state.milliseconds * 100;
+      console.log(this.state.results[turn-1]);
+    } else {
+      this.state.results[turn-1] = 6000;
+      console.log(this.state.results[turn-1]);
+    }
   }
 }
 
 onFalsePress() {
   console.log("false");
-  this.state.answered = true;
-  var img = this.state.count;
-  var turn = this.state.turns;
-  if (img === 1 || img === 2 || img === 3 || img === 4 || img === 6 || img === 8) {
-    this.state.results[turn - 1] = this.state.milliseconds * 100;
-    console.log(this.state.results[turn-1]);
-  } else {
-    this.state.results[turn - 1] = 6000;
-    console.log(this.state.results[turn-1]);
+  if(this.state.answered == false && this.state.turns > 0) {
+    this.state.answered = true;
+    var img = this.state.count;
+    var turn = this.state.turns;
+    if (img === 1 || img === 2 || img === 3 || img === 4 || img === 6 || img === 8) {
+      this.state.results[turn - 1] = this.state.milliseconds * 100;
+      console.log(this.state.results[turn-1]);
+    } else {
+      this.state.results[turn - 1] = 6000;
+      console.log(this.state.results[turn-1]);
+    }
   }
 }
 
@@ -111,45 +170,6 @@ onFalsePress() {
                   </CardSectionBlue>
               </View>
     );
-  }
-  componentDidMount () {
-    this.myInterval = setInterval(() => {
-      if (this.state.answered == false & this.state.turns > 0) {
-        this.state.results[this.state.turns - 1] = 5000;
-      }
-      if (this.state.turns > 0) {
-      this.setState(prevState => ({
-          count: Math.floor((Math.random() * 8) + 1),
-          seconds : 0,
-          milliseconds : 0,
-          turns : this.state.turns - 1,
-          answered : false
-      }))
-    }
-    if (this.state.turns === 0) {
-      this.state.turns = -1;
-      for (var i = 0; i < 10; i++) {
-        this.state.total += this.state.results[i];
-      }
-      this.state.average = this.state.total / 10;
-      console.log(this.state.results);
-      console.log(this.state.average);
-      this.props.profileUpdate({ prop: 'reaction', value: this.state.average });
-      Actions.game2();
-    }
-  }, 4000);
-
-    this.myInterval2 = setInterval(() => {
-      this.setState(prevState => ({
-        milliseconds : prevState.milliseconds + 1
-      }))
-    }, 100);
-
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.myInterval);
-    clearInterval(this.myInterval2);
   }
 
 }
