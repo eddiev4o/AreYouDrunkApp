@@ -25,7 +25,7 @@ class Game1 extends PureComponent {
 
 
 onButtonPress() {
- Actions.game2();
+  Actions.game2intro();
 }
 
 onTruePress() {
