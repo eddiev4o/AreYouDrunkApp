@@ -25,23 +25,17 @@ constructor (props) {
 
   }
 }
-
-onButtonPress() {
- Actions.game3();
-}
   render() {
-
       const {count} = this.state
+  
       return (
-              <View style={styles.container} >
-                <Text style={styles.textStyle2}>Try to recall each word in this sequence</Text>
-                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
-                <CardSectionBlue>
-                <Button onPress={this.onButtonPress.bind(this)}>
-                  Game 3
-                </Button>
-                </CardSectionBlue>
 
+        <View style={{flex: 1, backgroundColor: '#164170' }}>
+                <View style={styles.gameContainer}>
+                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
+                </View>
+                  <CardSectionBlue>
+                  </CardSectionBlue>
               </View>
     );
   }
@@ -51,7 +45,13 @@ onButtonPress() {
       this.setState(prevState => ({
         count : prevState.count + 1
       }))
-    }, 3000)
+    
+      if(this.state.count == 10){
+        Actions.game3();
+      }
+    
+    }
+    , 3000)
   }
   componentWillUnmount() {
     clearInterval(this.myInterval)
@@ -77,6 +77,18 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
     marginBottom: 100
+  },
+  gameContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginTop: 80,
+    marginBottom: 100,
+    marginRight: 25,
+    marginLeft: 25
   },
   textStyle2 : {
     fontSize: 40,

@@ -74,7 +74,7 @@ onButtonPress() {
   clearInterval(this.myInterval);
   clearInterval(this.myInterval);
   console.log('cleared intervals in Game1');
- Actions.game2();
+ Actions.game2intro();
 }
 
 stopTimer() {
