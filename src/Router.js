@@ -6,6 +6,7 @@ import Game1Intro from './components/Game1Intro';
 import Game1 from './components/Game1';
 import Game2Intro from './components/Game2Intro';
 import Game2 from './components/Game2';
+import Game2Outro from './components/Game2Outro';
 import Game3 from './components/Game3';
 import Results from './components/Results';
 import LoginForm from './components/LoginForm';
@@ -21,6 +22,7 @@ const RouterComponent = () => {
         <Scene key="game1" component={Game1} title="Game 1" hideNavBar/>
         <Scene key="game2intro" component={Game2Intro} title="Game 2 Intro" hideNavBar/>
         <Scene key="game2" component={Game2} title="Game 2" hideNavBar/>
+        <Scene key="game2outro" component={Game2Outro} title="Game 2 Outro" hideNavBar/>
         <Scene key="game3" component={Game3} title="Game 3" hideNavBar/>
         <Scene key="results" component={Results} title="Results" hideNavBar/>
       </Scene>
