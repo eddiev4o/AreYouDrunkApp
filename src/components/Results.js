@@ -43,6 +43,8 @@ class Results extends PureComponent {
         ));
       console.log(responseData);
       console.log('dataResp', this.state.dataResp);
+    }).catch((error) => {
+        dataResp: 'Error try again'; 
     });
     const disResp = this.state.dataResp.toFixed(2);
     return (

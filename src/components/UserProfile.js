@@ -14,6 +14,7 @@ class UserProfile extends Component {
     Actions.auth();
   }
 
+
   // onPOSTPress() {
   //   const { sex, weight, drinks, reaction } = this.props;
   //   console.log({sex});
