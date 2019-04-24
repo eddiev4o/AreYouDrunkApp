@@ -15,7 +15,9 @@ onButtonPress() {
       return (
               <View style={{flex: 1, backgroundColor: '#164170' }}>
                 <Text style={styles.textStyle2}> Try to Remember Each Word in the Following Sequence</Text>
-                <View style={styles.gameContainer}></View>
+                <View style={styles.gameContainer}>
+                  <Text style={styles.textStyle2}> You will then be shown a second sequence, verify which words were in the first sequence, and which were not.</Text>
+                </View>
                   <CardSectionBlue>
                     <Button onPress={this.onButtonPress.bind(this)}>
                       I'm Ready

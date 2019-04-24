@@ -10,29 +10,54 @@ const RADIUS = 25;
 class Game2 extends PureComponent {
 constructor (props) {
   super(props);
+  global.bankNum = Math.floor((Math.random() * 5) + 1);
   this.state = {
     word: '',
     count: 0,
-
+    set: true,
+    var: wordbank = {},
     var: bankOne = {
-      id: 1,
       words: ['shoe','merge','thirsty','color','spot','temporary','think', 'capable', 'neat', 'leather']
      },
      var: bankTwo = {
-      id: 2,
       words: ['knife','heavy','daughter','lively','damage','organize','plan', 'wake', 'lip', 'soap']
-     }
-
+     },
+     var: bankThree = {
+       words: ['copy','travel','current','press','sister','bike','weather','bottle','impolite','punish']
+     },
+     var: bankFour = {
+      words: ['elated','grip','carpenter','education','dress','salt','soak','scare','allure','napkin']
+    },
+    var: bankFive = {
+      words: ['quartz','wave','church','love','great','faint','pen','battery','store','risk']
+    }
   }
 }
   render() {
-      const {count} = this.state
-  
+      const {count} = this.state  
+      if(this.state.set) {
+          if(global.bankNum == 1){
+            wordbank = bankOne;
+          }
+          if(global.bankNum == 2){
+            wordbank = bankTwo;
+          }
+          if(global.bankNum == 3){
+            wordbank = bankThree;
+          }
+          if(global.bankNum == 4){
+            wordbank = bankFour;
+          }
+          if(global.bankNum == 5){
+            wordbank = bankFive;
+          }
+        this.state.set = false;
+        }
       return (
 
         <View style={{flex: 1, backgroundColor: '#164170' }}>
                 <View style={styles.gameContainer}>
-                <Text style={styles.textStyle}>{bankOne.words[count]}</Text>
+                <Text style={styles.textStyle}>{wordbank.words[count]}</Text>
                 </View>
                   <CardSectionBlue>
                   </CardSectionBlue>
@@ -47,7 +72,7 @@ constructor (props) {
       }))
     
       if(this.state.count == 10){
-        Actions.game3();
+        Actions.game2outro();
       }
     
     }
