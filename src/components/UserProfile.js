@@ -14,31 +14,30 @@ class UserProfile extends Component {
     Actions.auth();
   }
 
-  onPOSTPress() {
-    const { sex, weight, drinks, reaction } = this.props;
-    console.log({sex});
-    console.log({weight});
-    console.log({drinks});
-    console.log({reaction});
-    var data = { sex, weight, drinks, reaction };
-    fetch('http://chrisreycap.pythonanywhere.com/predict/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then((response)=> {
-      Alert.alert("Your BAC % is : " + (response._bodyText))
-      console.log((response._bodyText))
-    })
-  }
+  // onPOSTPress() {
+  //   const { sex, weight, drinks, reaction } = this.props;
+  //   console.log({sex});
+  //   console.log({weight});
+  //   console.log({drinks});
+  //   console.log({reaction});
+  //   var data = { sex, weight, drinks, reaction };
+  //   fetch('http://chrisreycap.pythonanywhere.com/predict/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   }).then((response)=> {
+  //     Alert.alert("Your BAC % is : " + (response._bodyText))
+  //     console.log((response._bodyText))
+  //   })
+  // }
 
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#164170'}}>
       <Card style={{ backgroundColor: '#164170'}}>
-
-        <CardSection style={{flexDirection: 'column'}}>
+        <CardSection style={{marginTop: 25, flexDirection: 'column'}}>
         <Text style={styles.pickerTextStyle}>Sex</Text>
           <Picker
             selectedValue={this.props.sex}
@@ -78,6 +77,7 @@ class UserProfile extends Component {
             <Picker.Item label='DRUNK' value="Drunk" />
           </Picker>
         </CardSection>
+        {/*
         <CardSection>
           <Input
           label="Reaction Time"
@@ -86,16 +86,17 @@ class UserProfile extends Component {
           onChangeText={text => this.props.profileUpdate({ prop: 'reaction', value: text })}
           />
         </CardSection>
+      */}
         <CardSectionBlue>
           <Button onPress={this.onButtonPress.bind(this)}>
-            BEGIN
+            PLAY
           </Button>
         </CardSectionBlue>
-        <CardSectionBlue>
+        {/*<CardSectionBlue>
           <Button onPress={this.onPOSTPress.bind(this)}>
             POST REQUEST
           </Button>
-        </CardSectionBlue>
+        </CardSectionBlue>*/}
         <CardSectionBlue>
           <Button onPress={this.onLoginPress.bind(this)}>
             LOG IN

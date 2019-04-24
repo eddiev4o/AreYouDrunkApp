@@ -33,7 +33,7 @@ class Game1 extends PureComponent {
           seconds : 0,
           milliseconds : 0,
           turns : this.state.turns - 1,
-          answered : false
+          answered : false,
       }))
     }
     if (this.state.turns === 0) {
@@ -45,7 +45,7 @@ class Game1 extends PureComponent {
       console.log(this.state.results);
       console.log(this.state.average);
       this.props.profileUpdate({ prop: 'reaction', value: this.state.average });
-      Actions.game2();
+      Actions.game2intro();
       this.setState(prevState => ({
           count: Math.floor((Math.random() * 8) + 1),
           seconds : 0,
@@ -57,11 +57,12 @@ class Game1 extends PureComponent {
   }, 4000);
 
     this.myInterval2 = setInterval(() => {
+      if (this.state.answered == false & this.state.turns > 0) {
       this.setState(prevState => ({
         milliseconds : prevState.milliseconds + 1
       }))
+    }
     }, 100);
-
   }
 
   componentWillUnmount() {
@@ -74,7 +75,7 @@ onButtonPress() {
   clearInterval(this.myInterval);
   clearInterval(this.myInterval);
   console.log('cleared intervals in Game1');
- Actions.game2intro();
+  Actions.game2intro();
 }
 
 stopTimer() {
@@ -142,6 +143,7 @@ onFalsePress() {
         require('../../img/true.png'),
         require('../../img/false.png')
       ];
+
       return (
               <View style={{flex: 1, backgroundColor: '#164170' }}>
                 <Text style={styles.textStyle2}>Tap when the color matches the word</Text>
